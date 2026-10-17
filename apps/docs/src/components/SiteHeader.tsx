@@ -14,7 +14,7 @@ export interface SiteHeaderProps {
 
 export function SiteHeader({ homeHref, items }: SiteHeaderProps) {
   return (
-    <header className="fixed inset-x-0 top-0 z-30 bg-gradient-to-b from-forest-bark/90 via-forest-bark/45 to-transparent px-6 pb-6 pt-4 backdrop-blur-[2px] sm:px-10 lg:px-16">
+    <header className="fixed inset-x-0 top-0 z-30 px-6 pb-6 pt-4 backdrop-blur-[2px] sm:px-10 lg:px-16">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <Link
           href={homeHref}

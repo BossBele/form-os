@@ -80,7 +80,7 @@ function Tile({ tile, dim }: { tile: PlatformTile; dim?: boolean }) {
         dim ? ' opacity-80' : ''
       }`}
     >
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-forest-fern/20 bg-forest-bark/60">
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-forest-fern/20 bg-forest-moss">
         <Icon className="h-6 w-6" style={{ color: tile.color }} aria-hidden="true" />
       </span>
       <div className="min-w-0">

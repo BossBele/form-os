@@ -1,5 +1,4 @@
 import React from 'react';
-import { ForestBackdrop } from '../components/atmosphere/ForestBackdrop';
 import { SiteHeader } from '../components/SiteHeader';
 import { Canopy } from '../components/sections/Canopy';
 import { FormOSExample } from '../components/example/FormOSExample';
@@ -21,7 +20,6 @@ const NAV = [
 export default function HomePage() {
   return (
     <div className="relative overflow-x-hidden">
-      <ForestBackdrop />
 
       <SiteHeader homeHref="#canopy" items={NAV} />
 

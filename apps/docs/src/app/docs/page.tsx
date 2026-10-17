@@ -1,6 +1,5 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { ForestBackdrop } from '../../components/atmosphere/ForestBackdrop';
 import { SiteHeader } from '../../components/SiteHeader';
 import { DocsHub } from '../../components/docs/DocsHub';
 
@@ -21,7 +20,6 @@ const NAV = [
 export default function DocsPage() {
   return (
     <div className="relative overflow-x-hidden">
-      <ForestBackdrop />
 
       <SiteHeader homeHref="/" items={NAV} />
 
