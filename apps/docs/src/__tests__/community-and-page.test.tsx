@@ -78,4 +78,9 @@ describe('Task 9: Community and the assembled page', () => {
     expect(html).toContain('id="community"');
     expect(html).toContain('BossBele/formsjs');
   });
+
+  it('gives the fixed header a scrim so nav text stays readable over content', () => {
+    const html = renderToString(<HomePage />);
+    expect(html).toMatch(/<header[\s\S]{0,600}?(backdrop-blur|from-forest-bark)/);
+  });
 });

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { renderToString } from 'react-dom/server';
 import { Canopy } from '../components/sections/Canopy';
-import { MoonOrb, supportsWebGL } from '../components/atmosphere/MoonOrb';
+import { MoonOrb, MoonOrbVisual, supportsWebGL } from '../components/atmosphere/MoonOrb';
 
 describe('Task 3: Canopy', () => {
   it('states what form-os is in plain words and offers exactly two actions', () => {
@@ -30,5 +30,17 @@ describe('Task 3: Canopy', () => {
 
   it('detects a missing WebGL context instead of throwing', () => {
     expect(supportsWebGL()).toBe(false);
+  });
+
+  it('cannot swallow clicks with its decorative canvas', () => {
+    const html = renderToString(<MoonOrbVisual />);
+    expect(html).toContain('!pointer-events-none');
+  });
+
+  it('hides the decorative orb from assistive technology', () => {
+    const html = renderToString(<Canopy />);
+    expect(html).toMatch(
+      /aria-hidden="true"[^>]*data-decorative-orb|data-decorative-orb[^>]*aria-hidden="true"/
+    );
   });
 });

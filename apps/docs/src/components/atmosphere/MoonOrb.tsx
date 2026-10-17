@@ -25,24 +25,19 @@ export interface MoonOrbProps {
 }
 
 /**
- * A drifting nebula caught inside a circle — the moon hanging behind the
- * branches. Purely decorative: it encodes nothing about the library, and it
- * renders nothing at all on the server or without a WebGL context, so a page
- * that cannot draw it loses atmosphere and nothing else.
+ * The visual half, split out so it can be rendered and inspected without a
+ * WebGL context. `[&_*]:!pointer-events-none` is load-bearing: the shader's
+ * canvas sets `pointer-events: auto` inline, which would otherwise let a purely
+ * decorative layer swallow clicks and text selection in the hero.
  */
-export function MoonOrb({ size, className }: MoonOrbProps) {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setReady(supportsWebGL());
-  }, []);
-
-  if (!ready) return null;
-
+export function MoonOrbVisual({ size, className }: MoonOrbProps) {
   return (
     <div
       aria-hidden="true"
-      className={cn('pointer-events-none relative', className)}
+      className={cn(
+        'pointer-events-none relative [&_*]:!pointer-events-none',
+        className
+      )}
       style={size ? { width: size, height: size } : undefined}
     >
       <div
@@ -73,4 +68,21 @@ export function MoonOrb({ size, className }: MoonOrbProps) {
       />
     </div>
   );
+}
+
+/**
+ * A drifting nebula caught inside a circle — the moon hanging behind the
+ * branches. Purely decorative: it encodes nothing about the library, and it
+ * renders nothing at all on the server or without a WebGL context, so a page
+ * that cannot draw it loses atmosphere and nothing else.
+ */
+export function MoonOrb(props: MoonOrbProps) {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    setReady(supportsWebGL());
+  }, []);
+
+  if (!ready) return null;
+  return <MoonOrbVisual {...props} />;
 }

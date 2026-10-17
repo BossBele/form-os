@@ -60,7 +60,11 @@ export function Canopy({ onJumpToExample, onJumpToDocs }: CanopyProps) {
       className="relative flex min-h-[100svh] items-center overflow-hidden px-6 pb-28 pt-36 sm:px-10 lg:px-16"
     >
       {/* The moon, hung upper right and half-swallowed by the foliage. */}
-      <div className="pointer-events-none absolute inset-y-0 right-[-22%] flex items-center sm:right-[-8%] lg:right-[1%]">
+      <div
+        aria-hidden="true"
+        data-decorative-orb
+        className="pointer-events-none absolute inset-y-0 right-[-22%] flex items-center sm:right-[-8%] lg:right-[1%]"
+      >
         <div className="relative h-[clamp(300px,54vw,660px)] w-[clamp(300px,54vw,660px)] opacity-90">
           <MoonOrb className="absolute inset-0" />
           <ThreeDBeamCircle
