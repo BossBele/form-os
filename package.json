@@ -26,6 +26,8 @@
     "build:packages": "pnpm --filter './packages/*' build",
     "build:root": "tsup",
     "build": "pnpm build:packages && pnpm build:root",
+    "dev:docs": "pnpm --filter @form-os/docs dev",
+    "build:docs": "pnpm --filter @form-os/docs build",
     "test": "vitest run",
     "typecheck": "pnpm --filter './packages/*' exec tsc --noEmit",
     "release": "pnpm -r publish --access public"
