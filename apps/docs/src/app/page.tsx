@@ -5,6 +5,8 @@ import { FormOSExample } from '../components/example/FormOSExample';
 import { MentalModel } from '../components/sections/MentalModel';
 import { DocsHub } from '../components/docs/DocsHub';
 import { UseCases } from '../components/sections/UseCases';
+import { Comparisons } from '../components/sections/Comparisons';
+import { Pricing } from '../components/sections/Pricing';
 
 export default function HomePage() {
   return (
@@ -16,6 +18,8 @@ export default function HomePage() {
         <MentalModel />
         <DocsHub />
         <UseCases />
+        <Comparisons />
+        <Pricing />
       </main>
     </div>
   );
