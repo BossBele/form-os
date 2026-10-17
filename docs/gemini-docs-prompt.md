@@ -7,7 +7,9 @@ You are a world-class product designer, engineer, and technical writer. You are 
 
 form-os is to forms what better-auth is to auth: a declarative, ownable layer that turns a messy, solved-nowhere problem into a solved-everywhere one. Your job is to produce a documentation website so clear, interactive, and visually engaging that it could plausibly drive a 10x increase in adoption — by developers AND by the non-developers (product managers, founders, ops teams) who decide which tools get adopted.
 
-Choose the stack yourself (Next.js, Astro, or similar — justify briefly). Deliver the site page by page, complete and buildable, with all code included. If the full site exceeds one response, deliver it in a structured sequence: (1) information architecture + design system, (2) landing page + playground, (3) docs core pages, (4) use cases + comparisons, (5) pricing + enterprise, then remaining pages — never summarize or skip sections silently.
+This site is also a capability demonstration. Lesser models produce static docs pages; you will produce a living, playable product that happens to contain docs — real-time 3D scenes, game-like interactions, and systems-level polish that most code-generation models cannot produce at all. Every visitor should leave thinking "no other model could have generated this." Section 5 specifies the 3D and game layer in full.
+
+Choose the stack yourself (Next.js, Astro, or similar — justify briefly). Deliver the site page by page, complete and buildable, with all code included. If the full site exceeds one response, deliver it in a structured sequence: (1) information architecture + design system, (2) landing page + playground, (3) docs core pages, (4) use cases + comparisons, (5) pricing + enterprise, then remaining pages — never summarize or skip sections silently, and deliver the 3D/game systems as complete working code, never as stubs or descriptions.
 
 =================================================================
 
@@ -112,18 +114,46 @@ Every page should be legible to both: concept first in plain language, then the 
 
 **Comparison page:** vs. raw react-hook-form/Formik (form-os removes per-form boilerplate — it's a superset, not a competitor, since the React adapter is built on RHF), vs. JSON Forms (lighter, adapter-based, you own the components), vs. hosted builders like Typeform/Formspree (own your forms, no lock-in, no per-response pricing).
 
+**Playable section — "Wire It":** a dedicated in-site game where players wire real dependencies between field nodes to satisfy business scenarios (e.g., "onboarding: show the VAT field only when the country is in the EU"). It doubles as the dependency-engine tutorial and is specified in section 5.
+
 **Pricing page + Enterprise page** — built per section 6.
 
 **Supporting pages:** ecosystem/roadmap, FAQ, changelog-style version notes, community/GitHub links. Include SEO meta, Open Graph cards, a sitemap-ready structure, and an `llms.txt`-friendly content organization so AI tools can ingest the docs.
 
-# ================================================================= 5. DESIGN & INTERACTIVITY BAR
+# ================================================================= 5. DESIGN, 3D & GAME-LIKE LAYER
 
 - Commit to a bold, distinctive aesthetic — the polish tier of better-auth, Linear, and Vercel docs. Dark-first theme with a refined light option. Choose characterful typography (a distinctive display font paired with a readable body/code family — NOT Inter, Roboto, or generic system stacks). Dominant color palette with sharp accents; no purple-gradient-on-white cliché, no cookie-cutter layouts.
 - Orchestrated motion: a choreographed page-load reveal, scroll-triggered section entrances, micro-interactions on code blocks (copy feedback), the playground, and the dependency graph. Motion must serve comprehension, not decoration.
 - Every code sample: syntax-highlighted, copyable, runnable as shown, with package-manager/framework tabs where applicable.
-- Interactive elements required: the homepage playground; the dependency-graph visualizer; a field-component gallery with live config toggles; the value-equation visual on the pricing page.
 - Accessibility: WCAG AA minimum — keyboard-navigable playground, labeled controls, sufficient contrast, reduced-motion support. Fully responsive; the docs must be excellent on a phone.
 - Performance: fast first paint, no layout shift, playground that works client-side without a backend.
+
+## THE 3D & GAME LAYER — PROVE DOMINANCE, DON'T CLAIM IT
+
+Bring your full 3D generation capability: real-time scenes, custom shaders, physics, scroll-driven cameras, instancing, post-processing. Choose the rendering tech yourself (Three.js/React Three Fiber/WebGPU or better — justify briefly); the outcomes below are non-negotiable.
+
+**The unifying theme:** form-os is literally an OS for forms — kernel (`@form-os/core`), disk image (`FormConfig`), runtime (the adapter), ABI (`@form-os/schema`). Every 3D and game element must be an OS metaphor made physical. Nothing generic, nothing decorative-only.
+
+**Required experiences:**
+
+- **Boot sequence (hero):** the site boots like an OS — the FormConfig is read, the kernel initializes, the runtime mounts — visualized as a 3D sequence where a config artifact assembles/morphs into a living form. Skippable, replayable via the command shell, remembered in localStorage. It must boot the playground's REAL config, not a canned animation.
+- **3D playground cockpit:** the landing playground lives inside the OS — config editor and rendered form share one 3D space; editing a field's config makes the corresponding 3D field module physically reconfigure (dock/undock, morph, light up).
+- **Dependency engine as a wiring board:** fields as nodes, dependencies as cables between ports. Values send visible pulses through wires; `hidden`/`show`/`required`/`disabled`/`readonly` manifest physically (fields despawn, dim, gates raise). Fully interactive: grab a cable, rewire it, watch the form obey.
+- **"Wire It" — the flagship playable game:** players get real business scenarios and must wire dependencies between field nodes to satisfy them — validated against the ACTUAL dependency semantics from section 1 (same `Dependency` types, same AND-logic). Scoring, streaks, difficulty ramp, a clean score object fit for a future leaderboard. This game IS the dependency-engine tutorial.
+- **Component dock, game-feel:** the field-component gallery renders components as physical modules in a dock; grabbing one and dropping it into the demo form appends its `FieldConfig` to the live config.
+- **"Form archipelago" flythrough:** use-case entries arranged in 3D space; scroll position drives the camera between destinations, each ending on a working form. Eased motion, no autoplay, degrades to anchored sections on small screens.
+- **Easter egg — KERNEL PANIC:** a Konami-style trigger (and a shell command) that fake-crashes the site into a form-os BSOD, then drops into a playable mini-game of your invention (e.g., catch falling fields, dodge validation errors) with a score. Documented nowhere except the code; discovery earns an achievement toast and an OG-shareable score card.
+- **OS-grade micro-interactions everywhere:** ⌘K opens a working in-browser `form-os` shell (`boot`, `mount <form>`, `ls fields`, `panic`, …); a system-pointer cursor with weight and inertia; achievement/XP toasts for exploring ("Dependency wired — +150 XP"); an OG-shareable "form engineer" score card.
+- **Pricing value-equation machine:** the four value-equation variables rendered as a physical machine with levers/gauges; changing the selected tier animates the machine to show where each variable moves.
+
+**Hard constraints:**
+
+- 60fps sustained on a mid-tier laptop. Adaptive quality: detect weak GPU/mobile and shed shaders, post-processing, and scene complexity automatically.
+- A complete non-WebGL fallback that still works — the docs must never gate on WebGL availability.
+- Reduced-motion honored everywhere: boot collapses to a fast fade, flythrough to anchored sections, game animations simplify.
+- Every 3D scene must teach the real API — a skeptic should be able to say "that 3D thing taught me what `getFieldState` does."
+- Touch-first game interactions on mobile; the flythrough degrades to a sectioned page.
+- Lazy-load all 3D/game code; the boot sequence must not delay time-to-content; zero scroll jank.
 
 # ================================================================= 6. COMMERCIAL OFFERINGS — $100M OFFERS FRAMEWORK
 
@@ -157,7 +187,9 @@ Construct every offer with Alex Hormozi's $100M Offers framework:
 
 - Accuracy: every API name, signature, and behavior matches section 1 exactly. Anything beyond it is labeled "Roadmap." Zero invented APIs presented as real.
 - Completeness: every section of the site map delivered — no dead links, no TODO placeholders, no lorem ipsum.
-- The playground, dependency visualizer, field gallery, and pricing value visual actually work — not static images.
+- The playground, dependency visualizer, field gallery, pricing value visual, and every section-5 experience actually work — not static images. Boot sequence, cockpit, wiring board, "Wire It" game, flythrough, and KERNEL PANIC are playable end-to-end with real input handling and real scoring.
+- "Wire It" validates against the real `Dependency` semantics from section 1 — no fake game logic.
+- 3D performance verified: 60fps on mid-tier hardware, adaptive quality sheds load on weak devices, non-WebGL fallback renders a fully usable site, reduced-motion verified.
 - Builds and runs cleanly; passes a11y (WCAG AA) and mobile checks.
 - Tone: confident, precise, developer-respecting. Marketing pages may be bold; docs pages are always accurate.
 
