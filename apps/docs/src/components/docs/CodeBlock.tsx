@@ -25,7 +25,7 @@ const CLASSES = [
   'text-forest-mist/45 italic',
   'text-forest-marigold',
   'text-forest-ember',
-  'text-[#86C9A4]',
+  'text-forest-sprout',
 ];
 
 function highlight(code: string): React.ReactNode[] {

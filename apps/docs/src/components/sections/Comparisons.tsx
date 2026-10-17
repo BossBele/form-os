@@ -38,7 +38,7 @@ export function Comparisons() {
                   </span>
                   {row.formOs}
                 </p>
-                <p className="min-w-0 break-words text-sm leading-[1.75] text-forest-mist/85">
+                <p className="min-w-0 break-words text-sm leading-[1.75] text-forest-mist">
                   <span className="mb-1.5 block font-mono text-[0.64rem] uppercase tracking-[0.18em] text-forest-mist">
                     {row.alternativeName}
                   </span>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { MoonOrb } from '../atmosphere/MoonOrb';
 import { ThreeDBeamCircle } from '../lightswind/3d-beam-circle';
 import { useReducedMotion } from '../atmosphere/useReducedMotion';
@@ -33,9 +34,9 @@ const ORBITS = [
     radiusFactor: 0.36,
     speed: 41,
     delay: 0.35,
-    boxColor: 'rgb(233 242 230 / 0.8)',
-    glowColor: '#E9F2E6',
-    orbitColor: '#E9F2E6',
+    boxColor: 'rgb(246 241 228 / 0.8)',
+    glowColor: '#F6F1E4',
+    orbitColor: '#F6F1E4',
   },
   {
     id: 3,
@@ -43,16 +44,19 @@ const ORBITS = [
     radiusFactor: 0.5,
     speed: 24,
     delay: 0.68,
-    boxColor: 'rgb(123 75 138 / 0.9)',
-    glowColor: '#7B4B8A',
-    orbitColor: '#7B4B8A',
+    boxColor: 'rgb(178 94 74 / 0.9)',
+    glowColor: '#B25E4A',
+    orbitColor: '#B25E4A',
   },
 ];
+
+const DOCS_CTA_CLASS =
+  'rounded-full border border-forest-fern/70 px-7 py-3.5 text-sm font-semibold text-forest-moonlight transition hover:border-forest-marigold hover:text-forest-marigold';
 
 export function Canopy({ onJumpToExample, onJumpToDocs }: CanopyProps) {
   const reduced = useReducedMotion();
   const jumpToExample = onJumpToExample ?? (() => scrollToSection('live-example'));
-  const jumpToDocs = onJumpToDocs ?? (() => scrollToSection('docs-hub'));
+  const jumpToDocs = onJumpToDocs;
 
   return (
     <section
@@ -113,17 +117,23 @@ export function Canopy({ onJumpToExample, onJumpToDocs }: CanopyProps) {
             >
               See it work
             </button>
-            <button
-              type="button"
-              data-hero-cta
-              onClick={jumpToDocs}
-              className="rounded-full border border-forest-fern/70 px-7 py-3.5 text-sm font-semibold text-forest-moonlight transition hover:border-forest-marigold hover:text-forest-marigold"
-            >
-              Read the docs
-            </button>
+            {jumpToDocs ? (
+              <button
+                type="button"
+                data-hero-cta
+                onClick={jumpToDocs}
+                className={DOCS_CTA_CLASS}
+              >
+                Read the docs
+              </button>
+            ) : (
+              <Link href="/docs" data-hero-cta className={DOCS_CTA_CLASS}>
+                Read the docs
+              </Link>
+            )}
           </div>
 
-          <p className="mt-10 font-mono text-xs text-forest-mist/80">
+          <p className="mt-10 font-mono text-xs text-forest-mist">
             MIT licensed · @form-os/core · @form-os/react · @form-os/schema
           </p>
         </div>

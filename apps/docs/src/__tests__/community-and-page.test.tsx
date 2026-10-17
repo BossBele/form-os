@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { renderToString } from 'react-dom/server';
 import HomePage from '../app/page';
+import DocsPage from '../app/docs/page';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { Community } from '../components/sections/Community';
 
@@ -9,7 +10,6 @@ const SECTION_IDS = [
   'canopy',
   'live-example',
   'mental-model',
-  'docs-hub',
   'use-cases',
   'comparisons',
   'pricing',
@@ -23,7 +23,7 @@ describe('Task 9: Community and the assembled page', () => {
     expect(html).toContain('/llms.txt');
   });
 
-  it('assembles all eight sections in the order the spec fixes', () => {
+  it('assembles all seven sections in the order the spec fixes', () => {
     const html = renderToString(<HomePage />);
     let cursor = -1;
     for (const id of SECTION_IDS) {
@@ -32,6 +32,17 @@ describe('Task 9: Community and the assembled page', () => {
       expect(at, `section #${id} out of order`).toBeGreaterThan(cursor);
       cursor = at;
     }
+  });
+
+  it('moves the documentation hub onto its own route, linked from the landing page', () => {
+    const landing = renderToString(<HomePage />);
+    expect(landing).not.toContain('id="docs-hub"');
+    expect(landing).toContain('href="/docs"');
+
+    const docs = renderToString(<DocsPage />);
+    expect(docs).toContain('id="docs-hub"');
+    expect(docs).toContain('href="#chapter-quickstart"');
+    expect(docs).toContain('href="/"');
   });
 
   it('serves the headline, the mental model and the pricing tiers in server HTML with no JavaScript', () => {

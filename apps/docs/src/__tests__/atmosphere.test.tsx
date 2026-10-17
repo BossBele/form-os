@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { renderToString } from 'react-dom/server';
-import { ForestBackdrop, setForestScroll } from '../components/atmosphere/ForestBackdrop';
+import { ForestBackdrop } from '../components/atmosphere/ForestBackdrop';
 import { Fireflies } from '../components/atmosphere/Fireflies';
-import { FoliageLayers } from '../components/atmosphere/FoliageLayers';
 import { useReducedMotion } from '../components/atmosphere/useReducedMotion';
 
 describe('Task 2: Atmosphere', () => {
@@ -20,12 +19,6 @@ describe('Task 2: Atmosphere', () => {
     expect(matches.length).toBe(12);
   });
 
-  it('renders the requested foliage depth', () => {
-    const html = renderToString(<FoliageLayers depth={4} />);
-    const matches = html.match(/data-foliage-layer/g) ?? [];
-    expect(matches.length).toBe(4);
-  });
-
   it('reads reduced-motion safely on the server instead of touching matchMedia during render', () => {
     function Probe() {
       return <span data-probe>{String(useReducedMotion())}</span>;
@@ -40,21 +33,5 @@ describe('Task 2: Atmosphere', () => {
     expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)/);
     expect(css).toContain('animation-duration: 0.01ms !important');
     expect(css).toContain('transition-duration: 0.01ms !important');
-  });
-
-  it('drives foliage parallax from a scroll offset that something actually sets', () => {
-    const target = {
-      style: {
-        store: {} as Record<string, string>,
-        setProperty(key: string, value: string) {
-          this.store[key] = value;
-        },
-      },
-    };
-    setForestScroll(target as never, 800);
-    expect(target.style.store['--forest-scroll']).toBe('-800px');
-    expect(renderToString(<FoliageLayers depth={3} />)).toContain(
-      'var(--forest-scroll'
-    );
   });
 });

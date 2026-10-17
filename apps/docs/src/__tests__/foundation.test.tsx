@@ -4,18 +4,18 @@ import { FOREST_PALETTE } from '../lib/forest';
 import RootLayout from '../app/layout';
 
 describe('Task 1: Foundation', () => {
-  it('exposes the exact dusk-forest palette', () => {
+  it('exposes the exact ember-dusk palette', () => {
     expect(FOREST_PALETTE).toEqual({
-      bark: '#0C1512',
-      moss: '#16302A',
-      fern: '#2F6B4F',
-      ember: '#E07A3F',
+      bark: '#17120D',
+      moss: '#261F17',
+      fern: '#8C7557',
+      ember: '#E8662B',
       marigold: '#F2B03D',
-      amethyst: '#7B4B8A',
-      moonlight: '#E9F2E6',
-      mist: '#8FA99B',
+      amethyst: '#B25E4A',
+      moonlight: '#F6F1E4',
+      mist: '#B7A996',
       parchment: '#F7F3E8',
-      mossInk: '#16241D',
+      mossInk: '#1E1710',
     });
   });
 

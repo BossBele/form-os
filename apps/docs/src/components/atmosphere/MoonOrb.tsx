@@ -50,7 +50,7 @@ export function MoonOrbVisual({ size, className }: MoonOrbProps) {
         }}
       >
         <NebulaFlow
-          colors={['#7B4B8A', '#F2B03D', '#E9F2E6']}
+          colors={['#B25E4A', '#F2B03D', '#F6F1E4']}
           speed={0.5}
           scale={1.15}
           density={0.6}

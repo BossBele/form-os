@@ -1,24 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Fireflies } from './Fireflies';
-import { FoliageLayers } from './FoliageLayers';
-import { useReducedMotion } from './useReducedMotion';
 
 export interface ForestBackdropProps {
   intensity?: 'full' | 'quiet';
-}
-
-interface ScrollTarget {
-  style: { setProperty(key: string, value: string): void };
-}
-
-/**
- * Publishes the scroll position as a CSS custom property so the foliage layers
- * can parallax without React re-rendering anything on scroll.
- */
-export function setForestScroll(target: ScrollTarget, scrollY: number): void {
-  target.style.setProperty('--forest-scroll', `${-scrollY}px`);
 }
 
 const RAYS = [
@@ -30,45 +16,19 @@ const RAYS = [
 
 export function ForestBackdrop({ intensity = 'full' }: ForestBackdropProps) {
   const quiet = intensity === 'quiet';
-  const rootRef = useRef<HTMLDivElement | null>(null);
-  const reduced = useReducedMotion();
-
-  useEffect(() => {
-    if (reduced) return;
-    const element = rootRef.current;
-    if (!element) return;
-
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      setForestScroll(element, window.scrollY);
-    };
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, [reduced]);
 
   return (
     <div
-      ref={rootRef}
       aria-hidden="true"
       data-full-bleed
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-forest-bark"
     >
-      {/* Dusk wash — amethyst falling from the upper right. */}
+      {/* Dusk wash — ember light falling from the upper right. */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(120% 90% at 78% 6%, rgb(var(--amethyst) / 0.34) 0%, rgb(var(--amethyst) / 0.1) 34%, transparent 68%)',
+            'radial-gradient(120% 90% at 78% 6%, rgb(var(--amethyst) / 0.3) 0%, rgb(var(--amethyst) / 0.08) 34%, transparent 68%)',
         }}
       />
 
@@ -99,8 +59,6 @@ export function ForestBackdrop({ intensity = 'full' }: ForestBackdropProps) {
             }}
           />
         ))}
-
-      <FoliageLayers depth={quiet ? 3 : 4} />
 
       <Fireflies count={quiet ? 9 : 18} interactive={!quiet} />
 

@@ -45,14 +45,14 @@ export function Community() {
             </a>
           </div>
 
-          <p className="mt-6 max-w-2xl text-xs leading-relaxed text-forest-mist/80">
+          <p className="mt-6 max-w-2xl text-xs leading-relaxed text-forest-mist">
             <code className="font-mono">/llms.txt</code> is this documentation in
             a form an AI assistant can read — useful when you want help writing
             a configuration without pasting half a website into a prompt.
           </p>
         </div>
 
-        <footer className="mt-10 flex flex-wrap items-center justify-between gap-3 text-xs text-forest-mist/70">
+        <footer className="mt-10 flex flex-wrap items-center justify-between gap-3 text-xs text-forest-mist">
           <p className="font-mono">
             @form-os/core · @form-os/react · @form-os/schema — version 1.0.1
           </p>

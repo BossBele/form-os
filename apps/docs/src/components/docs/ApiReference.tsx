@@ -47,7 +47,7 @@ export function ApiReference() {
                     {entry.description}
                   </p>
 
-                  <pre className="mt-3 overflow-x-auto rounded-lg bg-forest-bark/50 px-3 py-2 font-mono text-[0.72rem] leading-relaxed text-[#86C9A4]">
+                  <pre className="mt-3 overflow-x-auto rounded-lg bg-forest-bark/50 px-3 py-2 font-mono text-[0.72rem] leading-relaxed text-forest-sprout">
                     {entry.example}
                   </pre>
                 </dd>

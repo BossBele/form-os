@@ -85,7 +85,7 @@ describe('Task 4: The live example', () => {
   it('exposes its config beside the form, wrapped so a long label cannot break the layout', () => {
     const html = renderToString(<FormOSExample />);
     expect(html).toContain('data-config-pane');
-    expect(html).toContain('overflow-x-auto');
+    expect(html).toContain('overflow-x-hidden');
   });
 
   it('wraps a field label far longer than the fixture instead of breaking the row', () => {

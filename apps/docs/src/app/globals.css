@@ -3,72 +3,72 @@
 @tailwind utilities;
 
 /* ---------------------------------------------------------------------------
-   Enchanted forest palette.
+   Ember dusk palette — warm umber darks, paper-cream lights, ember accents.
    Held as channel triplets so Tailwind can apply opacity modifiers
    (`bg-forest-fern/30`) and so both themes switch from one set of tokens.
    :root is daybreak (light); .dark is the dusk default.
    --------------------------------------------------------------------------- */
 :root {
   --bark: 247 243 232;
-  --moss: 237 230 214;
-  --fern: 47 107 79;
-  --ember: 156 74 30;
-  --marigold: 140 90 10;
-  --amethyst: 107 66 120;
-  --moonlight: 22 36 29;
-  --mist: 92 107 96;
-  --sprout: 47 107 79;
+  --moss: 234 225 207;
+  --fern: 122 100 71;
+  --ember: 180 74 26;
+  --marigold: 138 92 10;
+  --amethyst: 158 82 60;
+  --moonlight: 30 23 16;
+  --mist: 96 82 63;
+  --sprout: 62 107 71;
   --parchment: 247 243 232;
-  --moss-ink: 22 36 29;
+  --moss-ink: 30 23 16;
 
   --font-fraunces: "Fraunces", ui-serif, Georgia, serif;
   --font-instrument: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --font-plex-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
   /* Re-theme Lightswind's own tokens away from their default blue. */
-  --primarylw: #9c4a1e;
-  --primarylw-2: #8c5a0a;
+  --primarylw: #b44a1a;
+  --primarylw-2: #8a5c0a;
   --darklw: #f7f3e8;
-  --darklw-2: #ede6d6;
-  --greedy: #2f6b4f;
+  --darklw-2: #eae1cf;
+  --greedy: #3e6b47;
 
   color-scheme: light;
 }
 
 .dark {
-  --bark: 12 21 18;
-  --moss: 22 48 42;
-  --fern: 47 107 79;
-  --ember: 224 122 63;
+  --bark: 23 18 13;
+  --moss: 38 31 23;
+  --fern: 140 117 87;
+  --ember: 232 102 43;
   --marigold: 242 176 61;
-  --amethyst: 123 75 138;
-  --moonlight: 233 242 230;
-  --mist: 143 169 155;
-  --sprout: 134 201 164;
+  --amethyst: 178 94 74;
+  --moonlight: 246 241 228;
+  --mist: 183 169 150;
+  --sprout: 147 201 162;
 
-  --primarylw: #e07a3f;
+  --primarylw: #e8662b;
   --primarylw-2: #f2b03d;
-  --darklw: #0c1512;
-  --darklw-2: #16302a;
-  --greedy: #2f6b4f;
+  --darklw: #17120d;
+  --darklw-2: #261f17;
+  --greedy: #93c9a2;
 
   color-scheme: dark;
 }
 
 .daybreak {
   --bark: 247 243 232;
-  --moss: 237 230 214;
-  --ember: 156 74 30;
-  --marigold: 140 90 10;
-  --amethyst: 107 66 120;
-  --moonlight: 22 36 29;
-  --mist: 92 107 96;
-  --sprout: 47 107 79;
+  --moss: 234 225 207;
+  --ember: 180 74 26;
+  --marigold: 138 92 10;
+  --amethyst: 158 82 60;
+  --moonlight: 30 23 16;
+  --mist: 96 82 63;
+  --sprout: 62 107 71;
 
-  --primarylw: #9c4a1e;
-  --primarylw-2: #8c5a0a;
+  --primarylw: #b44a1a;
+  --primarylw-2: #8a5c0a;
   --darklw: #f7f3e8;
-  --darklw-2: #ede6d6;
+  --darklw-2: #eae1cf;
 
   color-scheme: light;
 }
