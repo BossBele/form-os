@@ -1,0 +1,125 @@
+# form-os
+
+> Describe your form once. Run it anywhere.
+
+form-os is an open-source, configuration-driven form library for JavaScript and
+TypeScript. A form is a data file rather than markup, which makes it
+versionable, testable, portable, and safe to generate.
+
+- Repository: https://github.com/BossBele/formsjs
+- License: MIT
+- Packages: @form-os/core, @form-os/react, @form-os/schema
+
+## Install
+
+    pnpm add @form-os/core @form-os/react react-hook-form
+
+Add @form-os/schema when configurations need checking outside a browser.
+
+## How the dependency engine works
+
+Each field may carry a `dependencies` array of `{ name, value, type }` entries,
+where `type` is one of `show`, `hidden`, `required`, `disabled` or
+`readonly`. `getFieldState(field, values)` evaluates them against the current
+values and returns `{ visible, required, disabled, readonly, defaultValue }`.
+
+Conditions of the same `type` on one field are combined with AND: every one of
+them must match before the condition takes effect.
+
+## Documentation
+
+### Quickstart
+
+A working, conditional form in about five minutes — and none of it is wiring.
+
+Install the core, the React bindings, and react-hook-form. If you want to check configurations outside a browser — in a CMS, an API, or a build step — add the schema package too.
+
+Then describe your form as an object. Each entry in fields is one input: what it is called, what type it is, and optionally how it should behave. There is no separate markup file, and no second place to keep in step.
+
+Hand that object to useFormConfig and render the fields it gives you back. Everything that makes the form interesting — the conditions, the validation, the defaults — is already in the description you just wrote.
+
+### Core concepts
+
+The dependency engine is the interesting part. Everything else is convenience.
+
+A field can watch other fields. You declare that as a list of dependencies, each naming the field it watches, the value it is waiting for, and what should happen when that value turns up. There are five things that can happen: show, hidden, required, disabled, and readonly.
+
+When a field carries several dependencies of the same kind, they all have to match at once. Two show rules means both values must line up before the field appears. That single rule covers most of what people reach for a visual logic builder to express.
+
+getFieldState is the function that answers it. Given a field and the current values, it returns whether the field is visible, required, disabled or read-only, plus the default value it should start from. It is a plain function with no React in it, so the same answer comes out in a test, on a server, or in a worker.
+
+Validation rules sit alongside: required, min, max, minLength, maxLength, and pattern. Each accepts either a bare value or an object with a message, so a form can be precise without becoming unreadable.
+
+### The React bindings
+
+Thin by design. They wire your description into react-hook-form and then get out of the way.
+
+useFormConfig takes your description, works out the starting values, sets up react-hook-form, and hands back everything react-hook-form gives you plus the normalised fields. If you already know react-hook-form, you already know how to submit, reset, and read this form.
+
+Field renders one entry. It looks up the right component for that field type, evaluates the field state, and returns nothing at all when the field is hidden. You never write an if around a hidden field again.
+
+FormFieldsProvider is where your design system goes in. Register a map of field type to component once, near the top of your app, and every form below it uses your components. There are eleven built-in ones to start from, and they are individually importable so unused ones cost nothing.
+
+When you need total control over a single field, useField gives you the same pieces Field uses internally — the controller, the field state, and the evaluated conditions — so you can build something entirely your own without leaving the system.
+
+### The schema package
+
+The reason a form can be written by something other than a person.
+
+@form-os/schema exports one thing: a JSON Schema describing what a valid configuration looks like. It is the contract that lets a configuration travel — between services, between teams, and between a person and a machine.
+
+That matters more than it sounds. Once a form is data with a published shape, it can live in a content management system and be edited by someone who does not write code. It can be served by an API and updated without a deploy. It can be produced by a language model and checked before a single input is drawn.
+
+Validate with any JSON Schema validator you already have. Ajv is the common choice. A configuration that fails validation never reaches the browser, which turns a whole class of production incident into a build failure.
+
+## API surface (v1.0.1)
+
+- `@form-os/core` — `normalizeConfig(config: FieldConfig[] | Partial<FormConfig> | unknown): FormConfig`
+  Turns either a bare array of fields or a partial config object into a canonical FormConfig. When given an object it fills in validationMode with "onTouched" and reValidateMode with "onChange". Throws if there is no fields array to be found.
+  Example: `const form = normalizeConfig([{ name: 'email', type: 'email' }]);`
+- `@form-os/core` — `createDefaultValues(fields: FieldConfig[]): Record<string, any>`
+  Builds the starting values for a whole form by resolving each field through getDefaultValue. This is what the React binding seeds react-hook-form with.
+  Example: `const values = createDefaultValues(form.fields);`
+- `@form-os/core` — `getDefaultValue(field: FieldConfig): any`
+  Returns the field's own defaultValue when it has one. Otherwise it falls back by type: false for checkbox and switch, an empty array for a multiple select, and an empty string for everything else.
+  Example: `getDefaultValue({ name: 'agree', type: 'checkbox' }); // false`
+- `@form-os/core` — `getFieldState(field: FieldConfig, values: Record<string, any>): FieldState`
+  The dependency engine. Evaluates every show, hidden, required, disabled and readonly condition against the current values — combining conditions of the same kind with AND — and returns { visible, required, disabled, readonly, defaultValue }. It is a pure function with no React dependency.
+  Example: `const state = getFieldState(vatField, { jurisdiction: 'EU' });`
+- `@form-os/core` — `createFieldRegistry<T>(defaults: FieldRegistry<T>, overrides?: FieldRegistry<T>): FieldRegistry<T>`
+  Merges a set of default components with your overrides, keyed by field type. Useful when you want to replace two components out of eleven without listing the rest.
+  Example: `const components = createFieldRegistry(defaultComponents, { text: MyTextField });`
+- `@form-os/core` — `getValidationRules(field: FieldConfig): ValidationRules`
+  Returns the field's rules, or an empty object when it has none, so callers never have to guard for undefined.
+  Example: `const rules = getValidationRules(field);`
+- `@form-os/core` — `coercePattern(pattern?: string | RegExp): RegExp | undefined`
+  Turns a string pattern into a RegExp and passes an existing RegExp through untouched. Returns undefined for an empty or malformed pattern rather than throwing, so one bad rule cannot take a form down.
+  Example: `coercePattern('^[A-Z]{2}[0-9A-Z]{8,12}$'); // /^[A-Z]{2}[0-9A-Z]{8,12}$/`
+- `@form-os/react` — `useFormConfig<TFieldValues extends FieldValues>(config: FieldConfig[] | FormConfig): UseFormReturn<TFieldValues> & { fields: FieldConfig[] }`
+  Normalises the config, derives the starting values, initialises react-hook-form, and returns the complete UseFormReturn alongside the normalised fields ready to render.
+  Example: `const form = useFormConfig(config);`
+- `@form-os/react` — `<Field field={FieldConfig} control={Control<TFieldValues>} component={?ComponentType} />`
+  Renders one configured field, choosing the component registered for its type and honouring a per-field override. Returns null when the field is currently hidden, so conditions need no markup of their own.
+  Example: `<Field field={form.fields[0]} control={form.control} />`
+- `@form-os/react` — `useField<TFieldValues extends FieldValues>(field: FieldConfig, control: Control<TFieldValues>): { field, fieldState, state }`
+  The same internals Field uses: a react-hook-form controller, its field state, and the evaluated dependency conditions. Reach for it when you want a completely custom input without leaving the system.
+  Example: `const { field: controller, fieldState, state } = useField(fieldConfig, control);`
+- `@form-os/react` — `<FormFieldsProvider components={ComponentsMap}>{children}</FormFieldsProvider>`
+  Registers a field-type to component map for everything beneath it. This is how a design system reaches every form in an application without being passed down by hand.
+  Example: `<FormFieldsProvider components={components}>{children}</FormFieldsProvider>`
+- `@form-os/react` — `useFieldComponents(): ComponentsMap`
+  Reads the component map currently registered by the nearest FormFieldsProvider.
+  Example: `const components = useFieldComponents();`
+- `@form-os/react/fields` — `Record<'text' | 'number' | 'email' | 'password' | 'textarea' | 'date' | 'select' | 'checkbox' | 'radio' | 'switch', ComponentType<FieldComponentProps>>`
+  A ready-made map covering the ten standard field types, built from the individually importable components in the same module. Spread it to add your own, or import single components and skip the rest.
+  Example: `import { defaultComponents, TextField } from '@form-os/react/fields';`
+- `@form-os/schema` — `JSONSchema7  // $id: "https://form-os.dev/form-config.schema.json"`
+  A Draft-07 JSON Schema describing FormConfig, FieldConfig, Dependency, ValidationRules and Choice. Import it and hand it to any validator to check a configuration before it is used.
+  Example: `import { schema } from '@form-os/schema';`
+
+## Adapters not yet built
+
+- @form-os/svelte: Roadmap. A placeholder package exists in the repository today. A full Svelte 5 adapter is on the roadmap.
+- @form-os/vue: Roadmap. Planned official adapter over the same dependency-free core.
+- @form-os/solid: Roadmap. Planned. The core has no framework dependency, so the work is the bindings alone.
+- @form-os/native: Roadmap. Planned. The same configuration would drive a native mobile form unchanged.
