@@ -153,13 +153,15 @@ export function FormOSExample() {
             )}
           </div>
 
-          <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
-            <ConfigPane config={config} />
-            <p className="mt-4 min-w-0 break-words text-xs leading-relaxed text-forest-mist">
-              Ten fields, five kinds of conditional rule, and no per-form
-              JavaScript written by hand. The file on the right is the entire
-              form.
-            </p>
+          <div className="min-w-0 lg:relative">
+            <div className="flex min-w-0 flex-col lg:absolute lg:inset-0">
+              <ConfigPane config={config} className="min-h-0 lg:flex-1" />
+              <p className="mt-4 min-w-0 break-words text-xs leading-relaxed text-forest-mist">
+                Ten fields, five kinds of conditional rule, and no per-form
+                JavaScript written by hand. The file on the right is the entire
+                form.
+              </p>
+            </div>
           </div>
         </div>
       </div>
