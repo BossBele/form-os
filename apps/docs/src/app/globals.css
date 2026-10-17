@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-syne: 'Syne', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-plus-jakarta: 'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  --os-bg: #f8fafc;
+  --os-surface: #ffffff;
+  --os-panel: #f1f5f9;
+  --os-border: #cbd5e1;
+  --os-text: #020617;
+  --os-muted: #475569;
+}
+
+.dark {
+  --os-bg: #060913;
+  --os-surface: #0b1120;
+  --os-panel: #0f172a;
+  --os-border: #1e293b;
+  --os-text: #f8fafc;
+  --os-muted: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
