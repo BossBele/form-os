@@ -1,6 +1,7 @@
 import React from 'react';
 import { ForestBackdrop } from '../components/atmosphere/ForestBackdrop';
 import { Canopy } from '../components/sections/Canopy';
+import { FormOSExample } from '../components/example/FormOSExample';
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
       <ForestBackdrop />
       <main className="relative z-10">
         <Canopy />
+        <FormOSExample />
       </main>
     </div>
   );
