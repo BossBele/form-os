@@ -17,7 +17,7 @@ Choose the stack yourself (Next.js, Astro, or similar — justify briefly). Deli
 
 Only document APIs that exist. Anything aspirational must be clearly labeled "Roadmap". Do not invent APIs, props, or packages.
 
-**Monorepo packages (v0.6.0, MIT license):**
+**Monorepo packages (v1.0.0, MIT license):**
 
 - `@form-os/core` — dependency-free config parser, dependency engine, and validation helpers. Runs anywhere JavaScript runs.
 - `@form-os/react` — react-hook-form adapter with tree-shakeable field components. Peer deps: `react`, `react-hook-form`.
