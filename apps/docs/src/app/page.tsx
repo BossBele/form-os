@@ -2,6 +2,7 @@ import React from 'react';
 import { ForestBackdrop } from '../components/atmosphere/ForestBackdrop';
 import { Canopy } from '../components/sections/Canopy';
 import { FormOSExample } from '../components/example/FormOSExample';
+import { MentalModel } from '../components/sections/MentalModel';
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <main className="relative z-10">
         <Canopy />
         <FormOSExample />
+        <MentalModel />
       </main>
     </div>
   );
