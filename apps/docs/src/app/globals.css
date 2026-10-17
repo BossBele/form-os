@@ -2,29 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Enchanted forest palette.
+   Held as channel triplets so Tailwind can apply opacity modifiers
+   (`bg-forest-fern/30`) and so both themes switch from one set of tokens.
+   :root is daybreak (light); .dark is the dusk default.
+   --------------------------------------------------------------------------- */
 :root {
-  --font-syne: 'Syne', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-plus-jakarta: 'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-jetbrains-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
-  --os-bg: #f8fafc;
-  --os-surface: #ffffff;
-  --os-panel: #f1f5f9;
-  --os-border: #cbd5e1;
-  --os-text: #020617;
-  --os-muted: #475569;
+  --bark: 247 243 232;
+  --moss: 237 230 214;
+  --fern: 47 107 79;
+  --ember: 196 98 43;
+  --marigold: 217 154 32;
+  --amethyst: 107 66 120;
+  --moonlight: 22 36 29;
+  --mist: 92 107 96;
+  --parchment: 247 243 232;
+  --moss-ink: 22 36 29;
+
+  --font-fraunces: "Fraunces", ui-serif, Georgia, serif;
+  --font-instrument: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-plex-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Re-theme Lightswind's own tokens away from their default blue. */
+  --primarylw: #c4622b;
+  --primarylw-2: #d99a20;
+  --darklw: #f7f3e8;
+  --darklw-2: #ede6d6;
+  --greedy: #2f6b4f;
+
+  color-scheme: light;
 }
 
-.dark {
-  --os-bg: #060913;
-  --os-surface: #0b1120;
-  --os-panel: #0f172a;
-  --os-border: #1e293b;
-  --os-text: #f8fafc;
-  --os-muted: #94a3b8;
+.dark,
+.daybreak {
+  --bark: 12 21 18;
+  --moss: 22 48 42;
+  --fern: 47 107 79;
+  --ember: 224 122 63;
+  --marigold: 242 176 61;
+  --amethyst: 123 75 138;
+  --moonlight: 233 242 230;
+  --mist: 143 169 155;
+
+  --primarylw: #e07a3f;
+  --primarylw-2: #f2b03d;
+  --darklw: #0c1512;
+  --darklw-2: #16302a;
+  --greedy: #2f6b4f;
+
+  color-scheme: dark;
+}
+
+.daybreak {
+  --bark: 247 243 232;
+  --moss: 237 230 214;
+  --ember: 196 98 43;
+  --marigold: 217 154 32;
+  --amethyst: 107 66 120;
+  --moonlight: 22 36 29;
+  --mist: 92 107 96;
+
+  --primarylw: #c4622b;
+  --primarylw-2: #d99a20;
+  --darklw: #f7f3e8;
+  --darklw-2: #ede6d6;
+
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: rgb(var(--bark));
+  color: rgb(var(--moonlight));
+  font-family: var(--font-instrument);
+}
+
+::selection {
+  background-color: rgb(var(--marigold));
+  color: rgb(var(--bark));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--marigold));
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,11 +14,15 @@
     "@form-os/core": "workspace:*",
     "@form-os/react": "workspace:*",
     "@form-os/schema": "workspace:*",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lightswind": "3.2.5",
     "lucide-react": "0.454.0",
     "next": "14.2.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.51.0"
+    "react-hook-form": "^7.51.0",
+    "tailwind-merge": "2.6.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",
