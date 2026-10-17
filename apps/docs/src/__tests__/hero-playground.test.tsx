@@ -8,7 +8,13 @@ import {
   DOCK_MODULES,
   createDockFieldConfig,
 } from '../components/ComponentDock';
-import { CockpitCanvas, BootSequenceBanner } from '../components/CockpitCanvas';
+import {
+  CockpitCanvas,
+  BootSequenceBanner,
+  BOOT_STORAGE_KEY,
+  markBootCompletedInStorage,
+  hasBootCompletedInStorage,
+} from '../components/CockpitCanvas';
 import { HeroPlayground } from '../components/HeroPlayground';
 
 describe('Task 2: Interactive Hero, Live FormRenderer, 3D Cockpit & Component Dock', () => {
@@ -86,5 +92,29 @@ describe('Task 2: Interactive Hero, Live FormRenderer, 3D Cockpit & Component Do
     expect(html).toContain('Business View');
     expect(html).toContain('Describe a complex multi-step KYC onboarding form');
     expect(html).toContain('EU VIES VAT Registration Number');
+  });
+
+  it('persists boot sequence completion in storage and syncs external config mounts in HeroPlayground', () => {
+    const fakeStore: Record<string, string> = {};
+    const storage = {
+      getItem: (k: string) => fakeStore[k] ?? null,
+      setItem: (k: string, v: string) => {
+        fakeStore[k] = v;
+      },
+    };
+    expect(BOOT_STORAGE_KEY).toBe('form-os:booted');
+    expect(hasBootCompletedInStorage(storage)).toBe(false);
+    markBootCompletedInStorage(storage);
+    expect(hasBootCompletedInStorage(storage)).toBe(true);
+
+    const hipaaConfig = PLAYGROUND_PRESETS[1].config;
+    const html = renderToString(
+      <HeroPlayground
+        config={hipaaConfig}
+        onConfigChange={() => {}}
+      />
+    );
+    expect(html).toContain('patientFullName');
+    expect(html).toContain('guardianName');
   });
 });

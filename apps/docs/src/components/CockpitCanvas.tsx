@@ -12,6 +12,32 @@ import {
   Activity,
 } from 'lucide-react';
 
+export const BOOT_STORAGE_KEY = 'form-os:booted';
+
+export function hasBootCompletedInStorage(
+  storage?: Pick<Storage, 'getItem'> | null
+): boolean {
+  try {
+    const target =
+      storage ?? (typeof window !== 'undefined' ? window.localStorage : null);
+    return target?.getItem(BOOT_STORAGE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+export function markBootCompletedInStorage(
+  storage?: Pick<Storage, 'setItem'> | null
+): void {
+  try {
+    const target =
+      storage ?? (typeof window !== 'undefined' ? window.localStorage : null);
+    target?.setItem(BOOT_STORAGE_KEY, '1');
+  } catch {
+    // Ignore storage quota or SSR errors
+  }
+}
+
 export interface BootSequenceBannerProps {
   config: FormConfig;
   active: boolean;

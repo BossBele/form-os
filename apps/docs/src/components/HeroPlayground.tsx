@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   createDefaultValues,
   type DependencyType,
@@ -62,6 +62,12 @@ export function HeroPlayground({
   const [liveValues, setLiveValues] = useState<Record<string, any>>(() =>
     createDefaultValues(config.fields)
   );
+
+  useEffect(() => {
+    setJsonDraft(JSON.stringify(config, null, 2));
+    setJsonError(null);
+    setLiveValues(createDefaultValues(config.fields));
+  }, [config]);
 
   const schemaValidation = validateFormConfigSchema(config);
   const tsCode = generateTypeScriptSnippet(config);

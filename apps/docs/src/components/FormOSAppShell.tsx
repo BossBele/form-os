@@ -4,7 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { createDefaultValues, type FormConfig } from '@form-os/core';
 import { PLAYGROUND_PRESETS } from '../lib/prompt-to-config';
 import type { ShellAction } from '../lib/os-shell';
-import { BootSequenceBanner } from './CockpitCanvas';
+import {
+  BootSequenceBanner,
+  hasBootCompletedInStorage,
+  markBootCompletedInStorage,
+} from './CockpitCanvas';
 import { HeroPlayground } from './HeroPlayground';
 import { DependencyWiringBoard } from './DependencyWiringBoard';
 import { WireItGame } from './WireItGame';
@@ -47,6 +51,12 @@ export function FormOSAppShell() {
     setXp((prev) => prev + amount);
     setToastMessage(`+${amount} XP · ${reason}`);
   };
+
+  useEffect(() => {
+    if (!hasBootCompletedInStorage()) {
+      setBootActive(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!toastMessage) return;
@@ -299,7 +309,10 @@ export function FormOSAppShell() {
             <BootSequenceBanner
               config={activeConfig}
               active={bootActive}
-              onComplete={() => setBootActive(false)}
+              onComplete={() => {
+                markBootCompletedInStorage();
+                setBootActive(false);
+              }}
               onReplay={() => setBootActive(true)}
             />
           </div>
