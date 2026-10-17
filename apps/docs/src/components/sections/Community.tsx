@@ -2,6 +2,7 @@ import React from 'react';
 import { Github } from 'lucide-react';
 
 const REPOSITORY = 'https://github.com/BossBele/formsjs';
+const BASE_PATH = process.env.DOCS_BASE_PATH || '';
 
 export function Community() {
   return (
@@ -37,7 +38,7 @@ export function Community() {
               BossBele/formsjs on GitHub
             </a>
             <a
-              href="/llms.txt"
+              href={`${BASE_PATH}/llms.txt`}
               className="inline-flex items-center gap-2 rounded-full border border-forest-fern/50 px-6 py-3 text-sm font-semibold text-forest-moonlight transition hover:border-forest-marigold hover:text-forest-marigold"
             >
               Read /llms.txt
