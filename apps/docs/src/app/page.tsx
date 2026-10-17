@@ -4,6 +4,7 @@ import { Canopy } from '../components/sections/Canopy';
 import { FormOSExample } from '../components/example/FormOSExample';
 import { MentalModel } from '../components/sections/MentalModel';
 import { DocsHub } from '../components/docs/DocsHub';
+import { UseCases } from '../components/sections/UseCases';
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
         <FormOSExample />
         <MentalModel />
         <DocsHub />
+        <UseCases />
       </main>
     </div>
   );
