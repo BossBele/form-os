@@ -21,7 +21,7 @@ export function DocsHub() {
           </h2>
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-forest-mist">
             Plain language first, then the code that does it. Everything below
-            describes version 1.0.0 as it actually is.
+            describes version 1.0.1 as it actually is.
           </p>
 
           <div className="mt-8 min-w-0 rounded-2xl border border-forest-fern/25 bg-forest-bark/70 px-4 py-3">

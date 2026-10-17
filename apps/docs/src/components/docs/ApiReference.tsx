@@ -13,7 +13,7 @@ export function ApiReference() {
         API reference
       </h3>
       <p className="mt-4 max-w-[46rem] text-base leading-relaxed text-forest-mist">
-        Every export in version 1.0.0, with the signature it actually has. If
+        Every export in version 1.0.1, with the signature it actually has. If
         something is not listed here, it does not exist yet.
       </p>
 

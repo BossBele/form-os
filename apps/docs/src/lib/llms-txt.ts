@@ -50,7 +50,7 @@ them must match before the condition takes effect.
 
 ${chapters}
 
-## API surface (v1.0.0)
+## API surface (v1.0.1)
 
 ${api}
 

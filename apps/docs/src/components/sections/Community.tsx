@@ -54,7 +54,7 @@ export function Community() {
 
         <footer className="mt-10 flex flex-wrap items-center justify-between gap-3 text-xs text-forest-mist/70">
           <p className="font-mono">
-            @form-os/core · @form-os/react · @form-os/schema — version 1.0.0
+            @form-os/core · @form-os/react · @form-os/schema — version 1.0.1
           </p>
           <p className="font-mono">MIT licensed</p>
         </footer>
