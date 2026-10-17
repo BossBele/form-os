@@ -3,6 +3,7 @@ import { ForestBackdrop } from '../components/atmosphere/ForestBackdrop';
 import { Canopy } from '../components/sections/Canopy';
 import { FormOSExample } from '../components/example/FormOSExample';
 import { MentalModel } from '../components/sections/MentalModel';
+import { DocsHub } from '../components/docs/DocsHub';
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
         <Canopy />
         <FormOSExample />
         <MentalModel />
+        <DocsHub />
       </main>
     </div>
   );
