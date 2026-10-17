@@ -3,6 +3,8 @@ import type { FieldComponentProps } from './types';
 export function TextAreaField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }: FieldComponentProps) {
@@ -11,6 +13,7 @@ export function TextAreaField({
     <textarea
       ref={ref}
       {...field}
+      readOnly={fieldState.readonly}
       rows={fieldConfig.props?.rows ?? 3}
       placeholder={fieldConfig.placeholder}
       className={className}

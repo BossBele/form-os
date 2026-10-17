@@ -3,20 +3,21 @@ import {
   FormFieldsProvider,
   useField,
   useFieldComponents
-} from "./chunk-V2X6FW6I.js";
+} from "./chunk-G74UGG7R.js";
 
 // src/useFormConfig.ts
 import { useMemo } from "react";
 import {
   useForm
 } from "react-hook-form";
-import { normalizeConfig } from "@form-os/core";
+import {
+  createDefaultValues,
+  normalizeConfig
+} from "@form-os/core";
 function useFormConfig(config) {
   const normalized = useMemo(() => normalizeConfig(config), [config]);
   const defaultValues = useMemo(
-    () => Object.fromEntries(
-      normalized.fields.filter((f) => f.defaultValue !== void 0).map((f) => [f.name, f.defaultValue])
-    ),
+    () => createDefaultValues(normalized.fields),
     [normalized.fields]
   );
   const form = useForm({

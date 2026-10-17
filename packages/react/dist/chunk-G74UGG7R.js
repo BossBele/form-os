@@ -12,7 +12,7 @@ function useField(field, control) {
     name: field.name,
     control,
     rules: field?.rules,
-    defaultValue: field?.defaultValue,
+    defaultValue: state.defaultValue,
     disabled: state.disabled
   });
   return { field: f, fieldState, state };
@@ -50,8 +50,6 @@ function Field({
       fieldConfig: field,
       fieldState: state,
       error: fieldState.error,
-      disabled: state.disabled,
-      readonly: state.readonly,
       ...rest
     }
   );
@@ -63,4 +61,4 @@ export {
   useFieldComponents,
   Field
 };
-//# sourceMappingURL=chunk-V2X6FW6I.js.map
+//# sourceMappingURL=chunk-G74UGG7R.js.map

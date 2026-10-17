@@ -3,6 +3,8 @@ import type { FieldComponentProps } from './types';
 export function DateField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }: FieldComponentProps) {
@@ -12,6 +14,7 @@ export function DateField({
       ref={ref}
       {...field}
       type="date"
+      readOnly={fieldState.readonly}
       placeholder={fieldConfig.placeholder}
       className={className}
       {...rest}

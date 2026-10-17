@@ -8,31 +8,29 @@ interface FieldComponentProps {
     fieldConfig: FieldConfig;
     fieldState: FieldState;
     error?: FieldError;
-    disabled?: boolean;
-    readonly?: boolean;
     className?: string;
     [key: string]: any;
 }
 
-declare function TextField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function TextField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function NumberField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function NumberField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function EmailField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function EmailField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function PasswordField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function PasswordField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function TextAreaField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function TextAreaField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function DateField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function DateField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function SelectField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function SelectField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function CheckboxField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function CheckboxField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function RadioField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function RadioField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
-declare function SwitchField({ formField, fieldConfig, className, ...rest }: FieldComponentProps): react.JSX.Element;
+declare function SwitchField({ formField, fieldConfig, fieldState, error, className, ...rest }: FieldComponentProps): react.JSX.Element;
 
 declare const defaultComponents: {
     text: typeof TextField;

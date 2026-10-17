@@ -18,7 +18,7 @@ export function useField<TFieldValues extends FieldValues = FieldValues>(
     name: field.name as FieldPath<TFieldValues>,
     control,
     rules: (field?.rules) as RegisterOptions<TFieldValues> | undefined,
-    defaultValue: field?.defaultValue,
+    defaultValue: state.defaultValue,
     disabled: state.disabled,
   });
 

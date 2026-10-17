@@ -6,8 +6,6 @@ export interface FieldComponentProps {
   fieldConfig: FieldConfig;
   fieldState: FieldState;
   error?: FieldError;
-  disabled?: boolean;
-  readonly?: boolean;
   className?: string;
   [key: string]: any;
 }

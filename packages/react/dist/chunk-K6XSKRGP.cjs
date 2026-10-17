@@ -12,7 +12,7 @@ function useField(field, control) {
     name: field.name,
     control,
     rules: _optionalChain([field, 'optionalAccess', _ => _.rules]),
-    defaultValue: _optionalChain([field, 'optionalAccess', _2 => _2.defaultValue]),
+    defaultValue: state.defaultValue,
     disabled: state.disabled
   });
   return { field: f, fieldState, state };
@@ -50,8 +50,6 @@ function Field({
       fieldConfig: field,
       fieldState: state,
       error: fieldState.error,
-      disabled: state.disabled,
-      readonly: state.readonly,
       ...rest
     }
   );
@@ -63,4 +61,4 @@ function Field({
 
 
 exports.useField = useField; exports.FormFieldsProvider = FormFieldsProvider; exports.useFieldComponents = useFieldComponents; exports.Field = Field;
-//# sourceMappingURL=chunk-X5G3JO5T.cjs.map
+//# sourceMappingURL=chunk-K6XSKRGP.cjs.map

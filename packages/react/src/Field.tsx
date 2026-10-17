@@ -31,8 +31,6 @@ export function Field<TFieldValues extends FieldValues = FieldValues>({
       fieldConfig={field}
       fieldState={state}
       error={fieldState.error}
-      disabled={state.disabled}
-      readonly={state.readonly}
       {...rest}
     />
   );

@@ -12,6 +12,8 @@ function getRuleValue(
 export function NumberField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }: FieldComponentProps) {
@@ -21,6 +23,7 @@ export function NumberField({
       ref={ref}
       {...field}
       type="number"
+      readOnly={fieldState.readonly}
       min={getRuleValue(fieldConfig.rules?.min)}
       max={getRuleValue(fieldConfig.rules?.max)}
       placeholder={fieldConfig.placeholder}

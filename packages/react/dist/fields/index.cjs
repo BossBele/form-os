@@ -1,12 +1,14 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }
 
-var _chunkX5G3JO5Tcjs = require('../chunk-X5G3JO5T.cjs');
+var _chunkK6XSKRGPcjs = require('../chunk-K6XSKRGP.cjs');
 
 // src/fields/TextField.tsx
 var _jsxruntime = require('react/jsx-runtime');
 function TextField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -17,6 +19,7 @@ function TextField({
       ref,
       ...field,
       type: "text",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -35,6 +38,8 @@ function getRuleValue(rule) {
 function NumberField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -45,6 +50,7 @@ function NumberField({
       ref,
       ...field,
       type: "number",
+      readOnly: fieldState.readonly,
       min: getRuleValue(_optionalChain([fieldConfig, 'access', _ => _.rules, 'optionalAccess', _2 => _2.min])),
       max: getRuleValue(_optionalChain([fieldConfig, 'access', _3 => _3.rules, 'optionalAccess', _4 => _4.max])),
       placeholder: fieldConfig.placeholder,
@@ -59,6 +65,8 @@ function NumberField({
 function EmailField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -69,6 +77,7 @@ function EmailField({
       ref,
       ...field,
       type: "email",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -81,6 +90,8 @@ function EmailField({
 function PasswordField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -91,6 +102,7 @@ function PasswordField({
       ref,
       ...field,
       type: "password",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -103,6 +115,8 @@ function PasswordField({
 function TextAreaField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -112,6 +126,7 @@ function TextAreaField({
     {
       ref,
       ...field,
+      readOnly: fieldState.readonly,
       rows: _nullishCoalesce(_optionalChain([fieldConfig, 'access', _5 => _5.props, 'optionalAccess', _6 => _6.rows]), () => ( 3)),
       placeholder: fieldConfig.placeholder,
       className,
@@ -125,6 +140,8 @@ function TextAreaField({
 function DateField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -135,6 +152,7 @@ function DateField({
       ref,
       ...field,
       type: "date",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -147,6 +165,8 @@ function DateField({
 function SelectField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -170,6 +190,8 @@ function SelectField({
 function CheckboxField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -193,6 +215,8 @@ function CheckboxField({
 function RadioField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -219,6 +243,8 @@ function RadioField({
 function SwitchField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -262,7 +288,7 @@ function DefaultField({
 }) {
   const components = defaultComponents;
   const resolved = _nullishCoalesce(_nullishCoalesce(component, () => ( components[field.type])), () => ( components["text"]));
-  return /* @__PURE__ */ _jsxruntime.jsx.call(void 0, _chunkX5G3JO5Tcjs.Field, { field, control, component: resolved, ...rest });
+  return /* @__PURE__ */ _jsxruntime.jsx.call(void 0, _chunkK6XSKRGPcjs.Field, { field, control, component: resolved, ...rest });
 }
 
 

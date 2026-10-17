@@ -1,12 +1,14 @@
 import {
   Field
-} from "../chunk-V2X6FW6I.js";
+} from "../chunk-G74UGG7R.js";
 
 // src/fields/TextField.tsx
 import { jsx } from "react/jsx-runtime";
 function TextField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -17,6 +19,7 @@ function TextField({
       ref,
       ...field,
       type: "text",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -35,6 +38,8 @@ function getRuleValue(rule) {
 function NumberField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -45,6 +50,7 @@ function NumberField({
       ref,
       ...field,
       type: "number",
+      readOnly: fieldState.readonly,
       min: getRuleValue(fieldConfig.rules?.min),
       max: getRuleValue(fieldConfig.rules?.max),
       placeholder: fieldConfig.placeholder,
@@ -59,6 +65,8 @@ import { jsx as jsx3 } from "react/jsx-runtime";
 function EmailField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -69,6 +77,7 @@ function EmailField({
       ref,
       ...field,
       type: "email",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -81,6 +90,8 @@ import { jsx as jsx4 } from "react/jsx-runtime";
 function PasswordField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -91,6 +102,7 @@ function PasswordField({
       ref,
       ...field,
       type: "password",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -103,6 +115,8 @@ import { jsx as jsx5 } from "react/jsx-runtime";
 function TextAreaField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -112,6 +126,7 @@ function TextAreaField({
     {
       ref,
       ...field,
+      readOnly: fieldState.readonly,
       rows: fieldConfig.props?.rows ?? 3,
       placeholder: fieldConfig.placeholder,
       className,
@@ -125,6 +140,8 @@ import { jsx as jsx6 } from "react/jsx-runtime";
 function DateField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -135,6 +152,7 @@ function DateField({
       ref,
       ...field,
       type: "date",
+      readOnly: fieldState.readonly,
       placeholder: fieldConfig.placeholder,
       className,
       ...rest
@@ -147,6 +165,8 @@ import { jsx as jsx7 } from "react/jsx-runtime";
 function SelectField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -170,6 +190,8 @@ import { jsx as jsx8 } from "react/jsx-runtime";
 function CheckboxField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -193,6 +215,8 @@ import { jsx as jsx9, jsxs } from "react/jsx-runtime";
 function RadioField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {
@@ -219,6 +243,8 @@ import { jsx as jsx10 } from "react/jsx-runtime";
 function SwitchField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }) {

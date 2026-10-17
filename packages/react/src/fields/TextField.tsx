@@ -3,6 +3,8 @@ import type { FieldComponentProps } from './types';
 export function TextField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }: FieldComponentProps) {
@@ -12,6 +14,7 @@ export function TextField({
       ref={ref}
       {...field}
       type="text"
+      readOnly={fieldState.readonly}
       placeholder={fieldConfig.placeholder}
       className={className}
       {...rest}

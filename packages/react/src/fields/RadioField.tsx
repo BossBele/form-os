@@ -3,6 +3,8 @@ import type { FieldComponentProps } from './types';
 export function RadioField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }: FieldComponentProps) {

@@ -3,6 +3,8 @@ import type { FieldComponentProps } from './types';
 export function EmailField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }: FieldComponentProps) {
@@ -12,6 +14,7 @@ export function EmailField({
       ref={ref}
       {...field}
       type="email"
+      readOnly={fieldState.readonly}
       placeholder={fieldConfig.placeholder}
       className={className}
       {...rest}

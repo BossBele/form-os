@@ -3,6 +3,8 @@ import type { FieldComponentProps } from './types';
 export function CheckboxField({
   formField,
   fieldConfig,
+  fieldState,
+  error,
   className,
   ...rest
 }: FieldComponentProps) {
