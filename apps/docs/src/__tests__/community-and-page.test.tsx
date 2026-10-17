@@ -10,6 +10,7 @@ const SECTION_IDS = [
   'canopy',
   'live-example',
   'mental-model',
+  'platforms',
   'use-cases',
   'comparisons',
   'pricing',
@@ -23,7 +24,7 @@ describe('Task 9: Community and the assembled page', () => {
     expect(html).toContain('/llms.txt');
   });
 
-  it('assembles all seven sections in the order the spec fixes', () => {
+  it('assembles all eight sections in the order the spec fixes', () => {
     const html = renderToString(<HomePage />);
     let cursor = -1;
     for (const id of SECTION_IDS) {

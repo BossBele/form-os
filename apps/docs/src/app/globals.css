@@ -9,8 +9,8 @@
    :root is daybreak (light); .dark is the dusk default.
    --------------------------------------------------------------------------- */
 :root {
-  --bark: 247 243 232;
-  --moss: 234 225 207;
+  --bark: 252 251 248;
+  --moss: 243 240 233;
   --fern: 122 100 71;
   --ember: 180 74 26;
   --marigold: 138 92 10;
@@ -18,7 +18,7 @@
   --moonlight: 30 23 16;
   --mist: 96 82 63;
   --sprout: 62 107 71;
-  --parchment: 247 243 232;
+  --parchment: 252 251 248;
   --moss-ink: 30 23 16;
 
   --font-fraunces: "Fraunces", ui-serif, Georgia, serif;
@@ -28,8 +28,8 @@
   /* Re-theme Lightswind's own tokens away from their default blue. */
   --primarylw: #b44a1a;
   --primarylw-2: #8a5c0a;
-  --darklw: #f7f3e8;
-  --darklw-2: #eae1cf;
+  --darklw: #fcfbf8;
+  --darklw-2: #f3f0e9;
   --greedy: #3e6b47;
 
   color-scheme: light;
@@ -53,24 +53,6 @@
   --greedy: #93c9a2;
 
   color-scheme: dark;
-}
-
-.daybreak {
-  --bark: 247 243 232;
-  --moss: 234 225 207;
-  --ember: 180 74 26;
-  --marigold: 138 92 10;
-  --amethyst: 158 82 60;
-  --moonlight: 30 23 16;
-  --mist: 96 82 63;
-  --sprout: 62 107 71;
-
-  --primarylw: #b44a1a;
-  --primarylw-2: #8a5c0a;
-  --darklw: #f7f3e8;
-  --darklw-2: #eae1cf;
-
-  color-scheme: light;
 }
 
 html {

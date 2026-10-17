@@ -24,9 +24,9 @@ const ORBITS = [
     radiusFactor: 0.44,
     speed: 30,
     delay: 0,
-    boxColor: 'rgb(242 176 61 / 0.9)',
-    glowColor: '#F2B03D',
-    orbitColor: '#F2B03D',
+    boxColor: 'rgb(var(--marigold) / 0.9)',
+    glowColor: 'rgb(var(--marigold))',
+    orbitColor: 'rgb(var(--marigold))',
   },
   {
     id: 2,
@@ -34,9 +34,9 @@ const ORBITS = [
     radiusFactor: 0.36,
     speed: 41,
     delay: 0.35,
-    boxColor: 'rgb(246 241 228 / 0.8)',
-    glowColor: '#F6F1E4',
-    orbitColor: '#F6F1E4',
+    boxColor: 'rgb(var(--moonlight) / 0.8)',
+    glowColor: 'rgb(var(--moonlight))',
+    orbitColor: 'rgb(var(--moonlight))',
   },
   {
     id: 3,
@@ -44,9 +44,9 @@ const ORBITS = [
     radiusFactor: 0.5,
     speed: 24,
     delay: 0.68,
-    boxColor: 'rgb(178 94 74 / 0.9)',
-    glowColor: '#B25E4A',
-    orbitColor: '#B25E4A',
+    boxColor: 'rgb(var(--amethyst) / 0.9)',
+    glowColor: 'rgb(var(--amethyst))',
+    orbitColor: 'rgb(var(--amethyst))',
   },
 ];
 
@@ -80,7 +80,7 @@ export function Canopy({ onJumpToExample, onJumpToDocs }: CanopyProps) {
             orbitThickness={1}
             arcOpacity={0.28}
             arcGlowIntensity={0.9}
-            badgeBorderColor="rgb(242 176 61 / 0.45)"
+            badgeBorderColor="rgb(var(--marigold) / 0.45)"
             badgeShadow="glow"
             centerGlow={false}
             animationPaused={reduced}

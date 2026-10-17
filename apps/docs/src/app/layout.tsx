@@ -37,16 +37,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" style={FONT_VARIABLES}>
+    <html lang="en" className="daybreak" style={FONT_VARIABLES}>
       <head>
         {/*
-          Applies the stored theme before the first paint. `dark` is the dusk
-          default; `daybreak` is the light alternative, and :root is light too
-          so the page is still readable if this script never runs.
+          Applies the stored theme before the first paint. Light is the
+          default; `dark` is the dusk alternative, and :root is light too so
+          the page is still readable if this script never runs.
         */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=document.documentElement;if(t==='light'){d.classList.remove('dark');d.classList.add('daybreak');}else{d.classList.add('dark');d.classList.remove('daybreak');}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=document.documentElement;if(t==='dark'){d.classList.add('dark');d.classList.remove('daybreak');}else{d.classList.remove('dark');d.classList.add('daybreak');}}catch(e){}})();`,
           }}
         />
         <link
