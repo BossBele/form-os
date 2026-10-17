@@ -2,7 +2,7 @@
   "name": "@form-os/formjs",
   "private": false,
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
