@@ -1,6 +1,14 @@
 import React from 'react';
-import { FormOSAppShell } from '../components/FormOSAppShell';
+import { ForestBackdrop } from '../components/atmosphere/ForestBackdrop';
+import { Canopy } from '../components/sections/Canopy';
 
 export default function HomePage() {
-  return <FormOSAppShell />;
+  return (
+    <div className="relative overflow-x-hidden">
+      <ForestBackdrop />
+      <main className="relative z-10">
+        <Canopy />
+      </main>
+    </div>
+  );
 }
