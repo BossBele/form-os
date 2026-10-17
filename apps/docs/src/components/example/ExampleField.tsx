@@ -80,7 +80,7 @@ function wrapField(
           </label>
 
           <span className="flex shrink-0 items-center gap-2 font-mono text-[0.62rem] uppercase tracking-wider">
-            {gated && <span className="text-forest-fern">conditional</span>}
+            {gated && <span className="text-forest-sprout">conditional</span>}
             {fieldState.required && (
               <span className="text-forest-marigold">required</span>
             )}

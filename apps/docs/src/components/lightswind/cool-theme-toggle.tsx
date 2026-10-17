@@ -39,7 +39,18 @@ export function CoolThemeToggle({ className, size = "md" }: CoolThemeToggleProps
     }
   };
 
-  if (!mounted) return <div className={cn("inline-flex rounded-full bg-muted", size === "sm" ? "h-6 w-12" : size === "md" ? "h-8 w-16" : "h-10 w-20")} />;
+  if (!mounted) {
+    return (
+      <button
+        type="button"
+        aria-label="Switch to the daybreak theme"
+        className={cn(
+          "relative overflow-hidden rounded-full bg-forest-moss transition-colors",
+          size === "sm" ? "h-6 w-12" : size === "md" ? "h-8 w-16" : "h-10 w-20"
+        )}
+      />
+    );
+  }
 
   const sizes = {
     sm: { button: "w-12 h-6", thumb: "w-4 h-4", icon: "w-2.5 h-2.5", padding: "p-1", translateX: "translateX(24px)", cloudSize: "w-3 h-3" },
@@ -54,7 +65,7 @@ export function CoolThemeToggle({ className, size = "md" }: CoolThemeToggleProps
       onClick={toggleTheme}
       className={cn(
         "relative rounded-full transition-colors duration-500 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 overflow-hidden",
-        theme === "dark" ? "bg-slate-900" : "bg-sky-300",
+        theme === "dark" ? "bg-forest-moss" : "bg-forest-marigold",
         currentSize.button,
         currentSize.padding,
         className

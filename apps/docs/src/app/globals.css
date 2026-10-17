@@ -12,11 +12,12 @@
   --bark: 247 243 232;
   --moss: 237 230 214;
   --fern: 47 107 79;
-  --ember: 196 98 43;
-  --marigold: 217 154 32;
+  --ember: 156 74 30;
+  --marigold: 140 90 10;
   --amethyst: 107 66 120;
   --moonlight: 22 36 29;
   --mist: 92 107 96;
+  --sprout: 47 107 79;
   --parchment: 247 243 232;
   --moss-ink: 22 36 29;
 
@@ -25,8 +26,8 @@
   --font-plex-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
   /* Re-theme Lightswind's own tokens away from their default blue. */
-  --primarylw: #c4622b;
-  --primarylw-2: #d99a20;
+  --primarylw: #9c4a1e;
+  --primarylw-2: #8c5a0a;
   --darklw: #f7f3e8;
   --darklw-2: #ede6d6;
   --greedy: #2f6b4f;
@@ -34,8 +35,7 @@
   color-scheme: light;
 }
 
-.dark,
-.daybreak {
+.dark {
   --bark: 12 21 18;
   --moss: 22 48 42;
   --fern: 47 107 79;
@@ -44,6 +44,7 @@
   --amethyst: 123 75 138;
   --moonlight: 233 242 230;
   --mist: 143 169 155;
+  --sprout: 134 201 164;
 
   --primarylw: #e07a3f;
   --primarylw-2: #f2b03d;
@@ -57,14 +58,15 @@
 .daybreak {
   --bark: 247 243 232;
   --moss: 237 230 214;
-  --ember: 196 98 43;
-  --marigold: 217 154 32;
+  --ember: 156 74 30;
+  --marigold: 140 90 10;
   --amethyst: 107 66 120;
   --moonlight: 22 36 29;
   --mist: 92 107 96;
+  --sprout: 47 107 79;
 
-  --primarylw: #c4622b;
-  --primarylw-2: #d99a20;
+  --primarylw: #9c4a1e;
+  --primarylw-2: #8c5a0a;
   --darklw: #f7f3e8;
   --darklw-2: #ede6d6;
 

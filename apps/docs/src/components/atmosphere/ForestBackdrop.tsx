@@ -19,6 +19,7 @@ export function ForestBackdrop({ intensity = 'full' }: ForestBackdropProps) {
   return (
     <div
       aria-hidden="true"
+      data-full-bleed
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-forest-bark"
     >
       {/* Dusk wash — amethyst falling from the upper right. */}

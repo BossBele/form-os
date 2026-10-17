@@ -62,7 +62,7 @@ export function Pricing() {
                 <dl className="mt-7 space-y-3.5">
                   {VALUE_LEVERS.map((lever) => (
                     <div key={lever.key} className="min-w-0">
-                      <dt className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-forest-fern">
+                      <dt className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-forest-sprout">
                         {lever.label}
                       </dt>
                       <dd className="mt-1 break-words text-sm leading-relaxed text-forest-mist">

@@ -27,6 +27,7 @@ const config: Config = {
           amethyst: 'rgb(var(--amethyst) / <alpha-value>)',
           moonlight: 'rgb(var(--moonlight) / <alpha-value>)',
           mist: 'rgb(var(--mist) / <alpha-value>)',
+          sprout: 'rgb(var(--sprout) / <alpha-value>)',
         },
       },
     },

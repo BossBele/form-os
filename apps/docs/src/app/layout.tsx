@@ -39,6 +39,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={FONT_VARIABLES}>
       <head>
+        {/*
+          Applies the stored theme before the first paint. `dark` is the dusk
+          default; `daybreak` is the light alternative, and :root is light too
+          so the page is still readable if this script never runs.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=document.documentElement;if(t==='light'){d.classList.remove('dark');d.classList.add('daybreak');}else{d.classList.add('dark');d.classList.remove('daybreak');}}catch(e){}})();`,
+          }}
+        />
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
