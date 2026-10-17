@@ -30,7 +30,8 @@
     "build:docs": "pnpm --filter @form-os/docs build",
     "test": "vitest run",
     "typecheck": "pnpm --filter './packages/*' exec tsc --noEmit",
-    "release": "pnpm -r publish --access public"
+    "release": "pnpm -r publish --access public",
+    "release:docs": "pnpm dlx gh-pages -d apps/docs/out -b gh-pages"
   },
   "dependencies": {
     "@form-os/core": "workspace:*",
