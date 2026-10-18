@@ -1,12 +1,12 @@
 {
   "name": "@form-os/docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
-    "build:pages": "DOCS_BASE_PATH=/formsjs next build",
+    "build:pages": "DOCS_BASE_PATH=/form-os next build",
     "start": "next start --port 3000",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
